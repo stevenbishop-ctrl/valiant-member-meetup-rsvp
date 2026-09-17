@@ -9,7 +9,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Valiant Member Meet-Up — Oct 15, 2026" />
-  <meta property="og:description" content="Unhinged Q&A hosted by Valiant patients, answered live by Dr. Bishop and Dr. Vaughan — with cocktails and hors d'oeuvres. Oct 15, 2026 · Commonwealth Club, Richmond. One guest welcome." />
+  <meta property="og:description" content="Unhinged Q&A hosted by Valiant patients, answered live by Dr. Bishop and Dr. Vaughan — with cocktails and hors d'oeuvres. Oct 15, 2026 · Commonwealth Club, Richmond. Guests welcome." />
   <meta property="og:url" content="https://valiantmenshealth.com/" />
   <meta property="og:site_name" content="Valiant Men's Health" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -96,7 +96,7 @@
         </p>
         <p>
           Cocktails and hors d'oeuvres will be served throughout the evening. Come as you are,
-          bring a guest if you'd like, and settle in for a few hours built for connection —
+          bring guests if you'd like, and settle in for a few hours built for connection —
           not clinics.
         </p>
         <p class="invitation-note">
@@ -135,9 +135,9 @@
           <article class="detail-card">
             <h3>Guests</h3>
             <p>
-              Each patient or member is welcome to bring
-              <strong>one guest</strong>. Please include their name when you RSVP
-              so we can plan seating and hospitality.
+              Members are welcome to <strong>bring guests</strong> — there is no
+              one-guest limit. Please list their names when you RSVP so we can
+              plan seating and hospitality.
             </p>
           </article>
           <article class="detail-card">
@@ -165,7 +165,7 @@
         <h2 id="rsvp-heading" class="section-title">RSVP</h2>
         <p class="rsvp-intro">
           Please respond at your earliest convenience so we can prepare for you—
-          and your guest, if you're bringing one.
+          and any guests you're bringing.
         </p>
 
         <div id="form-success" class="form-success" hidden role="status" aria-live="polite">
@@ -235,7 +235,7 @@
           </div>
 
           <fieldset class="field field-radio">
-            <legend>Bringing a guest? <span class="req">*</span></legend>
+            <legend>Bringing guests? <span class="req">*</span></legend>
             <div class="radio-row">
               <label class="radio-label">
                 <input type="radio" name="bringing-guest" value="yes" required />
@@ -250,14 +250,14 @@
           </fieldset>
 
           <div class="field" id="guest-name-field" hidden>
-            <label for="guest-name">Guest name <span class="req">*</span></label>
-            <input
-              type="text"
+            <label for="guest-name">Guest names <span class="req">*</span></label>
+            <textarea
               id="guest-name"
               name="guest-name"
+              rows="3"
               autocomplete="off"
-              placeholder="Guest's full name"
-            />
+              placeholder="List each guest's full name (one per line)"
+            ></textarea>
             <span class="field-error" id="error-guest-name" hidden></span>
           </div>
 

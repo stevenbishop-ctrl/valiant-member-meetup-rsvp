@@ -78,8 +78,8 @@ Leave empty (`""`) for Netlify-only / local preview behavior.
 | Full name | `full-name` | yes |
 | Email | `email` | yes |
 | Phone | `phone` | no |
-| Bringing a guest? | `bringing-guest` (`yes` / `no`) | yes |
-| Guest name | `guest-name` | only if bringing guest = yes |
+| Bringing guests? | `bringing-guest` (`yes` / `no`) | yes |
+| Guest names | `guest-name` | only if bringing guests = yes (one per line) |
 | Dietary / notes | `notes` | no |
 | Honeypot | `bot-field` | leave empty |
 | Form id (Netlify) | `form-name` = `rsvp` | hidden |

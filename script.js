@@ -254,14 +254,14 @@ function validate(form) {
 
   const guestSelected = Array.from(guestRadios).some((r) => r.checked);
   if (!guestSelected) {
-    setError("bringing-guest", "Please let us know if you're bringing a guest.");
+    setError("bringing-guest", "Please let us know if you're bringing guests.");
     ok = false;
   }
 
   const bringingYes = form.querySelector('input[name="bringing-guest"][value="yes"]');
   if (bringingYes && bringingYes.checked) {
     if (!guestName || !String(guestName.value).trim()) {
-      setError("guest-name", "Please enter your guest's name.");
+      setError("guest-name", "Please list your guest names.");
       ok = false;
     }
   }
@@ -326,7 +326,7 @@ function showSuccess(payload) {
         escapeHtml(payload["full-name"]) +
         "</strong>. We've received your RSVP" +
         (payload["bringing-guest"] === "yes" && payload["guest-name"]
-          ? " for you and <strong>" + escapeHtml(payload["guest-name"]) + "</strong>"
+          ? " for you and your guest(s): <strong>" + escapeHtml(payload["guest-name"].replace(/\n+/g, ", ")) + "</strong>"
           : "") +
         ". We look forward to seeing you on <span data-bind=\"date\">" +
         escapeHtml(EVENT_CONFIG.date) +
@@ -348,5 +348,5 @@ function escapeHtml(str) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/\"/g, "&quot;");
 }
