@@ -25,6 +25,8 @@ data-title="Valiant Member Meet-Up"
 
 `script.js` also keeps an `EVENT_CONFIG` object (hydrated from those `data-*` attributes) and a single `FORMSPREE_ACTION_URL` constant at the top.
 
+Leave empty (`""`) for Netlify-only / local preview behavior.
+
 ## Deploy to Netlify (same day)
 
 ### Option A — Drag and drop (fastest)
