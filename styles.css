@@ -1,0 +1,664 @@
+/* ============================================================
+   Valiant Men's Health — Member Meet-Up RSVP
+   Premium dark charcoal / navy · cream & soft gold accents
+   ============================================================ */
+
+:root {
+  --bg: #0f1419;
+  --bg-elevated: #171d26;
+  --bg-card: #1c2430;
+  --navy: #1a2744;
+  --charcoal: #121820;
+  --cream: #f3ebe0;
+  --cream-muted: #c9bfb0;
+  --gold: #c4a574;
+  --gold-soft: #d4bc8e;
+  --gold-dim: rgba(196, 165, 116, 0.18);
+  --line: rgba(243, 235, 224, 0.12);
+  --line-strong: rgba(196, 165, 116, 0.35);
+  --error: #e8a0a0;
+  --success: #9ec9a8;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --radius: 10px;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --max: 1120px;
+  --narrow: 640px;
+  --header-h: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--cream);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--gold-soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--gold);
+  color: var(--charcoal);
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--max));
+  margin-inline: auto;
+}
+
+.container.narrow {
+  width: min(100% - 2.5rem, var(--narrow));
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: rgba(15, 20, 25, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.brand:hover {
+  color: var(--gold-soft);
+}
+
+.brand-mark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  box-shadow: 0 0 12px rgba(196, 165, 116, 0.55);
+}
+
+.brand-text {
+  font-size: 0.95rem;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-nav a {
+  color: var(--cream-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.header-nav a:hover {
+  color: var(--cream);
+}
+
+.header-nav .nav-cta {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--gold-soft);
+}
+
+.header-nav .nav-cta:hover {
+  background: var(--gold-dim);
+  color: var(--cream);
+}
+
+@media (max-width: 560px) {
+  .header-nav a:not(.nav-cta) {
+    display: none;
+  }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), #b8955f);
+  color: var(--charcoal);
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: var(--charcoal);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border-color: var(--line-strong);
+}
+
+.btn-ghost:hover {
+  background: var(--gold-dim);
+  color: var(--cream);
+  border-color: var(--gold);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  padding: clamp(3.5rem, 10vw, 6.5rem) 0 clamp(4rem, 10vw, 7rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26, 39, 68, 0.9), transparent 70%),
+    linear-gradient(180deg, var(--navy) 0%, var(--bg) 100%);
+}
+
+.hero-glow {
+  position: absolute;
+  inset: auto 10% 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.55;
+}
+
+.hero-inner {
+  position: relative;
+  text-align: center;
+  max-width: 820px;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero h1 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+}
+
+.hero-meta {
+  margin: 0 0 1rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  color: var(--cream-muted);
+  font-weight: 500;
+}
+
+.meta-sep {
+  margin: 0 0.45rem;
+  color: var(--gold);
+}
+
+.hero-venue {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.hero-address {
+  color: var(--cream-muted);
+  font-weight: 400;
+  font-size: 0.98rem;
+}
+
+.hero-host {
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+  color: var(--cream-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+}
+
+.section-title {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--cream);
+}
+
+/* Invitation */
+
+.invitation {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.invitation h2 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--cream);
+}
+
+.invitation p {
+  margin: 0 0 1.1rem;
+  color: var(--cream-muted);
+  font-size: 1.08rem;
+  text-align: center;
+}
+
+.invitation-note {
+  padding: 1.1rem 1.25rem;
+  margin-top: 1.5rem !important;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-dim);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--cream) !important;
+  text-align: left !important;
+  font-size: 1rem !important;
+}
+
+/* Details */
+
+.details {
+  background: linear-gradient(180deg, var(--bg-elevated), var(--bg));
+  border-top: 1px solid var(--line);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-card {
+  padding: 1.6rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.detail-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.detail-card p {
+  margin: 0;
+  color: var(--cream-muted);
+}
+
+.detail-card strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.detail-link {
+  margin-top: 0.85rem !important;
+  font-size: 0.92rem;
+}
+
+/* RSVP */
+
+.rsvp {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.rsvp-intro {
+  margin: -0.5rem 0 2rem;
+  text-align: center;
+  color: var(--cream-muted);
+}
+
+#rsvp-form,
+.form-success {
+  padding: 2rem 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+}
+
+.field {
+  margin-bottom: 1.35rem;
+}
+
+.field label,
+.field legend {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.field-radio legend {
+  padding: 0;
+}
+
+.req {
+  color: var(--gold);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--cream-muted);
+  font-size: 0.85em;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--cream);
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(201, 191, 176, 0.45);
+}
+
+.field input:hover,
+.field textarea:hover {
+  border-color: rgba(196, 165, 116, 0.4);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.field.is-invalid input,
+.field.is-invalid textarea,
+.field-radio.is-invalid .radio-row {
+  border-color: var(--error);
+}
+
+.field-error {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+.radio-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.15rem;
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--cream-muted);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.radio-label:hover {
+  border-color: var(--line-strong);
+  color: var(--cream);
+}
+
+.radio-label:has(input:checked) {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  color: var(--cream);
+}
+
+.radio-label input {
+  accent-color: var(--gold);
+  width: 1rem;
+  height: 1rem;
+}
+
+.form-footnote {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--cream-muted);
+}
+
+/* Success state */
+
+.form-success {
+  text-align: center;
+}
+
+.form-success[hidden],
+#guest-name-field[hidden],
+#form-success[hidden] {
+  display: none !important;
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: rgba(158, 201, 168, 0.15);
+  color: var(--success);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.form-success h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.form-success p {
+  margin: 0 0 1.5rem;
+  color: var(--cream-muted);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 2.75rem 0 2.25rem;
+  background: var(--charcoal);
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+  display: grid;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.footer-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.footer-hosts {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  color: var(--cream-muted);
+}
+
+.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.footer-copy {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: rgba(201, 191, 176, 0.55);
+}
+
+@media (min-width: 700px) {
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    text-align: left;
+    align-items: start;
+  }
+
+  .footer-contact {
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+  }
+
+  .footer-copy {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}

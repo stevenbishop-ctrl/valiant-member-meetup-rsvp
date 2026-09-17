@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valiant Member Meet-Up — Thursday, October 15, 2026 | Valiant Men's Health</title>
+  <meta name="description" content="Join Dr. Steven Bishop and Dr. Bo Vaughan for the Valiant Member Meet-Up on Thursday, October 15, 2026, 5:00–8:00 PM at The Commonwealth Club, Richmond, VA. RSVP today." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Valiant Member Meet-Up — Oct 15, 2026" />
+  <meta property="og:description" content="Connect with your care team and fellow members. Thursday, October 15, 2026 · 5:00–8:00 PM · The Commonwealth Club, Richmond, VA. One guest welcome." />
+  <meta property="og:url" content="https://valiantmenshealth.com/" />
+  <meta property="og:site_name" content="Valiant Men's Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Valiant Member Meet-Up — Oct 15, 2026" />
+  <meta name="twitter:description" content="Connect with your care team and fellow members. Oct 15, 2026 · 5–8 PM · The Commonwealth Club, Richmond. RSVP today." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!--
+    EVENT CONFIG — edit title/date/time/venue in ONE place via data attributes below.
+    script.js reads these into window.EVENT_CONFIG.
+  -->
+  <div
+    id="event-config"
+    hidden
+    data-title="Valiant Member Meet-Up"
+    data-date="Thursday, October 15, 2026"
+    data-time="5:00 PM – 8:00 PM"
+    data-venue="The Commonwealth Club"
+    data-address="401 West Franklin Street, Richmond, VA 23220"
+    data-host="Valiant Men's Health — Dr. Steven Bishop &amp; Dr. Bo Vaughan"
+    data-contact-email="hello@valiantmenshealth.com"
+    data-contact-url="https://valiantmenshealth.com/"
+  ></div>
+
+  <a class="skip-link" href="#rsvp">Skip to RSVP</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://valiantmenshealth.com/" target="_blank" rel="noopener noreferrer">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">Valiant Men's Health</span>
+      </a>
+      <nav class="header-nav" aria-label="Page">
+        <a href="#invitation">Invitation</a>
+        <a href="#details">Details</a>
+        <a href="#rsvp" class="nav-cta">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="event-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">You're invited</p>
+        <h1 id="event-title" data-bind="title">Valiant Member Meet-Up</h1>
+        <p class="hero-meta">
+          <span data-bind="date">Thursday, October 15, 2026</span>
+          <span class="meta-sep" aria-hidden="true">·</span>
+          <span data-bind="time">5:00 PM – 8:00 PM</span>
+        </p>
+        <p class="hero-venue">
+          <span data-bind="venue">The Commonwealth Club</span><br />
+          <span class="hero-address" data-bind="address">401 West Franklin Street, Richmond, VA 23220</span>
+        </p>
+        <p class="hero-host" data-bind="host">Valiant Men's Health — Dr. Steven Bishop &amp; Dr. Bo Vaughan</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#rsvp">RSVP Now</a>
+          <a class="btn btn-ghost" href="#details">Event details</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Invitation -->
+    <section id="invitation" class="section invitation" aria-labelledby="invitation-heading">
+      <div class="container narrow">
+        <h2 id="invitation-heading">An evening with your care team</h2>
+        <p>
+          Join us for a relaxed member meet-up—an opportunity to connect with
+          Dr. Steven Bishop, Dr. Bo Vaughan, and fellow members of Valiant Men's Health.
+          Come as you are, bring a guest if you'd like, and enjoy a few hours of
+          conversation in a setting built for connection, not clinics.
+        </p>
+        <p class="invitation-note">
+          This is a members' gathering: no lectures, no sales pitch—just time with
+          the people who know your health story.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Event details -->
+    <section id="details" class="section details" aria-labelledby="details-heading">
+      <div class="container">
+        <h2 id="details-heading" class="section-title">Event details</h2>
+        <div class="details-grid">
+          <article class="detail-card">
+            <h3>When</h3>
+            <p>
+              <strong data-bind="date">Thursday, October 15, 2026</strong><br />
+              <span data-bind="time">5:00 PM – 8:00 PM</span>
+            </p>
+          </article>
+          <article class="detail-card">
+            <h3>Where</h3>
+            <p>
+              <strong data-bind="venue">The Commonwealth Club</strong><br />
+              <span data-bind="address">401 West Franklin Street, Richmond, VA 23220</span>
+            </p>
+            <p class="detail-link">
+              <a
+                href="https://maps.google.com/?q=401+West+Franklin+Street,+Richmond,+VA+23220"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Open in Maps</a>
+            </p>
+          </article>
+          <article class="detail-card">
+            <h3>Guests</h3>
+            <p>
+              Each patient or member is welcome to bring
+              <strong>one guest</strong>. Please include their name when you RSVP
+              so we can plan seating and hospitality.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. RSVP form -->
+    <section id="rsvp" class="section rsvp" aria-labelledby="rsvp-heading">
+      <div class="container narrow">
+        <h2 id="rsvp-heading" class="section-title">RSVP</h2>
+        <p class="rsvp-intro">
+          Please respond at your earliest convenience so we can prepare for you—
+          and your guest, if you're bringing one.
+        </p>
+
+        <div id="form-success" class="form-success" hidden role="status" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h3>Thank you — you're on the list</h3>
+          <p id="success-message">
+            We've received your RSVP. We look forward to seeing you on
+            <span data-bind="date">Thursday, October 15, 2026</span>.
+          </p>
+          <button type="button" class="btn btn-ghost" id="rsvp-another">Submit another RSVP</button>
+        </div>
+
+        <form
+          id="rsvp-form"
+          name="rsvp"
+          method="POST"
+          netlify
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="rsvp" />
+
+          <!-- Honeypot: leave empty; bots often fill it -->
+          <p class="honeypot" aria-hidden="true">
+            <label>
+              Don't fill this out if you're human:
+              <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+
+          <div class="field">
+            <label for="full-name">Full name <span class="req">*</span></label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              required
+              autocomplete="name"
+              placeholder="Your full name"
+            />
+            <span class="field-error" id="error-full-name" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+            <span class="field-error" id="error-email" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="(804) 555-0100"
+            />
+          </div>
+
+          <fieldset class="field field-radio">
+            <legend>Bringing a guest? <span class="req">*</span></legend>
+            <div class="radio-row">
+              <label class="radio-label">
+                <input type="radio" name="bringing-guest" value="yes" required />
+                <span>Yes</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="bringing-guest" value="no" required />
+                <span>No</span>
+              </label>
+            </div>
+            <span class="field-error" id="error-bringing-guest" hidden></span>
+          </fieldset>
+
+          <div class="field" id="guest-name-field" hidden>
+            <label for="guest-name">Guest name <span class="req">*</span></label>
+            <input
+              type="text"
+              id="guest-name"
+              name="guest-name"
+              autocomplete="off"
+              placeholder="Guest's full name"
+            />
+            <span class="field-error" id="error-guest-name" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="notes">Dietary restrictions / notes <span class="optional">(optional)</span></label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="3"
+              placeholder="Allergies, accessibility needs, or anything else we should know"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+            Confirm RSVP
+          </button>
+          <p class="form-footnote">
+            Questions?
+            <a href="mailto:hello@valiantmenshealth.com">hello@valiantmenshealth.com</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">Valiant Men's Health</p>
+        <p class="footer-hosts">Dr. Steven Bishop &amp; Dr. Bo Vaughan</p>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:hello@valiantmenshealth.com">hello@valiantmenshealth.com</a>
+        <a href="https://valiantmenshealth.com/" target="_blank" rel="noopener noreferrer">valiantmenshealth.com</a>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Valiant Men's Health. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
