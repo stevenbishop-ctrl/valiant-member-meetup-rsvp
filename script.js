@@ -247,7 +247,7 @@ function validate(form) {
   if (!emailVal) {
     setError("email", "Please enter your email.");
     ok = false;
-  } else if (!/^\S+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
     setError("email", "Please enter a valid email address.");
     ok = false;
   }
