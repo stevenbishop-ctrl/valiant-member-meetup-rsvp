@@ -34,7 +34,7 @@
     data-time="5:00 PM – 8:00 PM"
     data-venue="The Commonwealth Club"
     data-address="401 West Franklin Street, Richmond, VA 23220"
-    data-host="Valiant Men's Health — Dr. Steven Bishop &amp; Dr. Bo Vaughan"
+    data-host="Valiant Men's Health — Dr. Steven Bishop & Dr. Bo Vaughan"
     data-contact-email="hello@valiantmenshealth.com"
     data-contact-url="https://valiantmenshealth.com/"
   ></div>
@@ -71,7 +71,7 @@
           <span data-bind="venue">The Commonwealth Club</span><br />
           <span class="hero-address" data-bind="address">401 West Franklin Street, Richmond, VA 23220</span>
         </p>
-        <p class="hero-host" data-bind="host">Valiant Men's Health — Dr. Steven Bishop &amp; Dr. Bo Vaughan</p>
+        <p class="hero-host" data-bind="host">Valiant Men's Health — Dr. Steven Bishop & Dr. Bo Vaughan</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#rsvp">RSVP Now</a>
           <a class="btn btn-ghost" href="#details">Event details</a>
@@ -82,14 +82,14 @@
     <!-- 2. Invitation -->
     <section id="invitation" class="section invitation" aria-labelledby="invitation-heading">
       <div class="container narrow">
-        <h2 id="invitation-heading">Unhinged Q&amp;A — with cocktails &amp; hors d'oeuvres</h2>
+        <h2 id="invitation-heading">Unhinged Q&A — with cocktails & hors d'oeuvres</h2>
         <p>
           Join Dr. Steven Bishop, Dr. Bo Vaughan, and fellow Valiant members at the
           Commonwealth Club for an evening of connection, curiosity, and honest conversation
           about health and wellness.
         </p>
         <p>
-          The centerpiece is an <strong>Unhinged Q&amp;A</strong> — hosted and moderated by two
+          The centerpiece is an <strong>Unhinged Q&A</strong> — hosted and moderated by two
           Valiant patients who will bring the most interesting, curiosity-inducing questions
           about health and wellness from the social media world. Dr. Bishop and Dr. Vaughan
           will answer them live.
@@ -136,7 +136,7 @@
           <article class="detail-card">
             <h3>The program</h3>
             <p>
-              An <strong>Unhinged Q&amp;A</strong> hosted by two Valiant patients —
+              An <strong>Unhinged Q&A</strong> hosted by two Valiant patients —
               featuring the most curiosity-inducing health and wellness questions from
               social media, answered live by Dr. Bishop and Dr. Vaughan.
             </p>
@@ -174,18 +174,18 @@
           id="rsvp-form"
           name="rsvp"
           method="POST"
-          netlify
-          netlify-honeypot="bot-field"
-          data-netlify="true"
+          action="https://formsubmit.co/hello@valiantmenshealth.com"
           novalidate
         >
-          <input type="hidden" name="form-name" value="rsvp" />
+          <input type="hidden" name="_subject" value="Valiant Member Meet-Up RSVP" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
 
-          <!-- Honeypot: leave empty; bots often fill it -->
+          <!-- Honeypot (FormSubmit): leave empty -->
           <p class="honeypot" aria-hidden="true">
             <label>
               Don't fill this out if you're human:
-              <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
             </label>
           </p>
 
@@ -280,7 +280,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <p class="footer-name">Valiant Men's Health</p>
-        <p class="footer-hosts">Dr. Steven Bishop &amp; Dr. Bo Vaughan</p>
+        <p class="footer-hosts">Dr. Steven Bishop & Dr. Bo Vaughan</p>
       </div>
       <div class="footer-contact">
         <a href="mailto:hello@valiantmenshealth.com">hello@valiantmenshealth.com</a>
