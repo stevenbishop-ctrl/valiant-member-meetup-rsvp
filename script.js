@@ -2,13 +2,13 @@
  * Valiant Men's Health — Member Meet-Up RSVP
  *
  * Form backend:
- * - Netlify Forms: form has `netlify` / `data-netlify="true"` and name="rsvp"
- * - Optional Formspree: set FORMSPREE_ACTION_URL below (leave empty by default)
+ * - Production: FormSubmit emails hello@valiantmenshealth.com (no Netlify Forms)
  * - Local preview: validate, show success UI, console.log payload (no fake email send)
  */
 
 /* ========== CONFIG (edit here) ========== */
-const FORMSPREE_ACTION_URL = ""; // e.g. "https://formspree.io/f/xxxxxxxx" — empty = local / Netlify only
+const RSVP_EMAIL = "hello@valiantmenshealth.com";
+const FORMSUBMIT_URL = "https://formsubmit.co/ajax/" + RSVP_EMAIL;
 
 /**
  * Single source of truth for event copy on the page.
@@ -103,10 +103,7 @@ function setupForm() {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
 
-  if (FORMSPREE_ACTION_URL) {
-    form.setAttribute("action", FORMSPREE_ACTION_URL);
-  }
-
+  form.setAttribute("action", "https://formsubmit.co/" + RSVP_EMAIL);
   form.addEventListener("submit", onSubmit);
 
   const again = document.getElementById("rsvp-another");
@@ -138,72 +135,54 @@ function onSubmit(e) {
     location.hostname === "";
 
   // Local preview: never pretend an email was sent
-  if (isLocal && !FORMSPREE_ACTION_URL) {
+  if (isLocal) {
     console.log(
-      "[RSVP] Local preview — validated only. Deploy to Netlify (or set FORMSPREE_ACTION_URL) to receive submissions."
+      "[RSVP] Local preview — validated only. Deploy to send via FormSubmit to " + RSVP_EMAIL
     );
     showSuccess(payload);
     return;
   }
 
-  // Formspree path
-  if (FORMSPREE_ACTION_URL) {
-    submitViaFetch(FORMSPREE_ACTION_URL, payload, form).then((ok) => {
-      if (ok) showSuccess(payload);
-      else alert("Something went wrong sending your RSVP. Please email hello@valiantmenshealth.com.");
-    });
-    return;
-  }
-
-  // Netlify Forms: POST as application/x-www-form-urlencoded (or multipart)
-  const body = new URLSearchParams();
-  Object.keys(payload).forEach((k) => {
-    if (payload[k] != null && payload[k] !== "") body.append(k, payload[k]);
+  submitViaFormSubmit(form, payload).then((ok) => {
+    if (ok) showSuccess(payload);
+    else {
+      alert(
+        "Something went wrong sending your RSVP. Please email " + RSVP_EMAIL + " directly."
+      );
+    }
   });
-  body.set("form-name", "rsvp");
-
-  const btn = document.getElementById("submit-btn");
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = "Sending…";
-  }
-
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error("Netlify form error " + res.status);
-      showSuccess(payload);
-    })
-    .catch((err) => {
-      console.error(err);
-      // Fallback: native submit so Netlify still gets the post if fetch is blocked
-      form.removeEventListener("submit", onSubmit);
-      form.submit();
-    })
-    .finally(() => {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = "Confirm RSVP";
-      }
-    });
 }
 
-function submitViaFetch(url, payload, form) {
+function submitViaFormSubmit(form, payload) {
   const btn = document.getElementById("submit-btn");
   if (btn) {
     btn.disabled = true;
     btn.textContent = "Sending…";
   }
+
   const body = new FormData(form);
-  return fetch(url, {
+  // Ensure FormSubmit metadata is present even if HTML was cached oddly
+  body.set("_subject", "Valiant Member Meet-Up RSVP — " + (payload["full-name"] || ""));
+  body.set("_template", "table");
+  body.set("_captcha", "false");
+  if (!body.has("_honey")) body.set("_honey", "");
+
+  return fetch(FORMSUBMIT_URL, {
     method: "POST",
     body,
     headers: { Accept: "application/json" },
   })
-    .then((res) => res.ok)
+    .then(async (res) => {
+      if (!res.ok) throw new Error("FormSubmit error " + res.status);
+      // Some responses are JSON; others may be empty — treat 2xx as success
+      try {
+        const data = await res.json();
+        if (data && data.success === "false") throw new Error("FormSubmit rejected");
+      } catch (err) {
+        if (err && String(err.message).indexOf("FormSubmit") === 0) throw err;
+      }
+      return true;
+    })
     .catch((err) => {
       console.error(err);
       return false;
@@ -220,14 +199,12 @@ function collectPayload(form) {
   const fd = new FormData(form);
   const bringing = fd.get("bringing-guest") || "";
   return {
-    "form-name": "rsvp",
     "full-name": String(fd.get("full-name") || "").trim(),
     email: String(fd.get("email") || "").trim(),
     phone: String(fd.get("phone") || "").trim(),
     "bringing-guest": bringing,
     "guest-name": bringing === "yes" ? String(fd.get("guest-name") || "").trim() : "",
     notes: String(fd.get("notes") || "").trim(),
-    "bot-field": String(fd.get("bot-field") || ""),
   };
 }
 
@@ -326,9 +303,11 @@ function showSuccess(payload) {
         escapeHtml(payload["full-name"]) +
         "</strong>. We've received your RSVP" +
         (payload["bringing-guest"] === "yes" && payload["guest-name"]
-          ? " for you and your guest(s): <strong>" + escapeHtml(payload["guest-name"].replace(/\n+/g, ", ")) + "</strong>"
+          ? " for you and your guest(s): <strong>" +
+            escapeHtml(payload["guest-name"].replace(/\n+/g, ", ")) +
+            "</strong>"
           : "") +
-        ". We look forward to seeing you on <span data-bind=\"date\">" +
+        '. We look forward to seeing you on <span data-bind="date">' +
         escapeHtml(EVENT_CONFIG.date) +
         "</span>.";
     }
@@ -345,8 +324,8 @@ function showForm() {
 
 function escapeHtml(str) {
   return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/&/g, "&")
+    .replace(/</g, "<")
+    .replace(/>/g, ">")
+    .replace(/"/g, """);
 }
